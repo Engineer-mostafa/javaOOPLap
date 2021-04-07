@@ -2,6 +2,7 @@ package labreq;
 
 public class Labreq {
 
+	/*just to test the classes and Methods*/
 	public static void main(String[] args) {
 		
 		
@@ -100,7 +101,7 @@ public class Labreq {
 		}
 		else {
 			System.out.println("this is 3*3 matrix with arr {1,0,0,0,1,0,1,0,1} so this isn't identity");
-			System.out.println("->Sorry but this matrix ins't identity check it again");
+			System.out.println("-> Sorry but this matrix ins't identity check it again");
 
 		}
 		

@@ -13,6 +13,16 @@ public class Matrix implements Addable {
 	int M;				/*  number of rows of the matrix*/
 	int N;				/*number of columns of the matrix*/
 	
+	
+	/*Default constructor of Matrix*/
+	Matrix () {
+		/*initialization*/
+		this.M = 3;
+		this.N = 3;
+		matrix = new int[3][3];
+
+	}
+
 	/*constructor of Matrix*/
 	Matrix (int m, int n) {
 		
@@ -36,19 +46,16 @@ public class Matrix implements Addable {
 		if(arr.length < m * n || arr.length > m * n)  {
 			return false;
 		}
-		/*r will proceed with matrix row till the end of the column*/
-		/*c will be the matrix column*/
+		/*k will proceed with array*/
 		else
 		{
-			int r = 0;
+			int k = 0;
 			/*fill the matrix till the end of column then increase rows and reset the column*/
-			for(int i=0;i<arr.length;i++) {
+			for(int i=0;i<m;i++) {
 					for(int column = 0; column < n ; column++) {
-						matx[r][column] = arr[i];
-						i++;
+						matx[i][column] = arr[k];
+						k++;
 					}
-					i--;
-					r++;
 			}
 			return true;
 			
@@ -95,7 +102,6 @@ public class Matrix implements Addable {
 		 this.M = n;
 		 this.N = m;
 	}
-	
 	
 	
 	/*Override Method*/

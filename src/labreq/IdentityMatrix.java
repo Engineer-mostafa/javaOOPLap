@@ -2,6 +2,9 @@ package labreq;
 
 public class IdentityMatrix extends Matrix {
 
+	
+	
+	/*constructor that call super -> parent to set n , m  */
 	IdentityMatrix(int m) {
 		super(m, m);
 		// TODO Auto-generated constructor stub
@@ -18,8 +21,7 @@ public class IdentityMatrix extends Matrix {
 		if(arr.length < m * m || arr.length > m * m)  {
 			return false;
 		}
-		/*r will proceed with matrix row till the end of the column*/
-		/*c will be the matrix column*/
+		
 		else
 		{
 			/*check the identity*/
@@ -27,22 +29,24 @@ public class IdentityMatrix extends Matrix {
 				if(arr[i] != 1) {
 					return false;
 				}
-				else {
+					
+				else 
+				{
 					for(int j=i+1;j<i+m+1 && j < arr.length;j++) {
 						if(arr[j] != 0 ) return false;
 					}
 				}
 			
 			}
-			int r = 0;
+		
+
+			int k = 0;
 			/*fill the matrix till the end of column then increase rows and reset the column*/
-			for(int i=0;i<arr.length;i++) {
+			for(int i=0;i<m;i++) {
 					for(int column = 0; column < m ; column++) {
-						matx[r][column] = arr[i];
-						i++;
+						matx[i][column] = arr[k];
+						k++;
 					}
-					i--;
-					r++;
 			}
 			return true;
 			
@@ -50,10 +54,53 @@ public class IdentityMatrix extends Matrix {
 	}
 	
 	
-	/*the transpose of
-the identity matrix is the original matrix itself*/
+	/*the transpose of the identity matrix is the original matrix itself*/
 	void Transpose()
 	{
 		super.matrix = super.matrix;
 	}
+
+
+	/*add identity matrix only*/
+	@Override
+	public Object Add(Object x) {
+		
+		/*storage*/
+		int[][] matx = this.matrix;
+		int n =  this.N;
+		int m = this.M;
+		Matrix obj2 = (Matrix)x; 
+		
+		/*if it ins't matrix or the dimensions aren't equal*/
+		if(obj2.M != obj2.N && m != obj2.M)  {
+			return null;
+		}
+		else
+		{
+			/*check the identity*/
+			for(int i=0;i<m;i+= 1) {
+					for(int j=0;j<m;j++) {
+						if(i == j ) {
+							if(obj2.matrix[i][j] == 1) continue;
+							else return null;
+						}
+						else if(obj2.matrix[i][j] != 0) return null;
+					}
+				}
+			
+			/*add the elements*/
+			for(int i =0; i < m; ++i) {
+				for(int j =0; j <n; ++j) {
+					matx[i][j] += obj2.matrix[i][j]; 
+				}
+			}
+			return this;
+		}
+			
+	}
+			
+
+	
 }
+
+
